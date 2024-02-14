@@ -3,12 +3,12 @@ import PySimpleGUI as sg
 
 unit_conversions = {
     "Length": {
-        "Inches": {"Centimeters": 2.54, "Feet": 1/12, "Yards": 1/36, "Meters": 0.0254, "Kilometers": 0.0000254, "Miles": 1.57828e-5},
-        "Feet": {"Inches": 12, "Centimeters": 30.48, "Yards": 1/3, "Meters": 0.3048, "Kilometers": 0.0003048, "Miles": 0.000189394},
-        "Yards": {"Inches": 36, "Feet": 3, "Centimeters": 91.44, "Meters": 0.9144, "Kilometers": 0.0009144, "Miles": 0.000568182},
-        "Meters": {"Inches": 39.3701, "Feet": 3.28084, "Yards": 1.09361, "Centimeters": 100, "Kilometers": 0.001, "Miles": 0.000621371},
-        "Kilometers": {"Inches": 39370.1, "Feet": 3280.84, "Yards": 1093.61, "Meters": 1000, "Miles": 0.621371},
-        "Miles": {"Inches": 63360, "Feet": 5280, "Yards": 1760, "Meters": 1609.34, "Kilometers": 1.60934}
+        "Inches": {"CentiMetres": 2.54, "Feet": 1/12, "Yards": 1/36, "Metres": 0.0254, "KiloMetres": 0.0000254, "Miles": 1.57828e-5},
+        "Feet": {"Inches": 12, "CentiMetres": 30.48, "Yards": 1/3, "Metres": 0.3048, "KiloMetres": 0.0003048, "Miles": 0.000189394},
+        "Yards": {"Inches": 36, "Feet": 3, "CentiMetres": 91.44, "Metres": 0.9144, "KiloMetres": 0.0009144, "Miles": 0.000568182},
+        "Metres": {"Inches": 39.3701, "Feet": 3.28084, "Yards": 1.09361, "CentiMetres": 100, "KiloMetres": 0.001, "Miles": 0.000621371},
+        "KiloMetres": {"Inches": 39370.1, "Feet": 3280.84, "Yards": 1093.61, "Metres": 1000, "Miles": 0.621371},
+        "Miles": {"Inches": 63360, "Feet": 5280, "Yards": 1760, "Metres": 1609.34, "KiloMetres": 1.60934}
     },
     "Weight": {
         "Pounds": {"Ounces": 16, "Kilograms": 0.453592, "Grams": 453.592},
