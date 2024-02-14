@@ -4,11 +4,13 @@
 
 This is a unit converter which uses a PySimpleGUI window. 
 ![](images/screenshot1.png)
-You input the value you want to change into it , choose the type of conversion, such as volume, and choose between which measurements it should convert.
 
-## How it works
+It's possible to convert length, volumetric, time and weight units.
 
-The program takes data from the dictionary `unit_conversions` .
+## Background
+
+A dictionary for unit conversions is AI generated. It seems to be correct, only does not contain a comprehensive set of units. 
+
 
 ## Notes
 
@@ -17,8 +19,8 @@ It is advised to use PySimpleGUI 4.60.5 as Version 5.0.0, needs user registratio
 
 ## Future work
 
-- more conversion units
-- better asthetics
+- Additional conversion units
+- Non-standard GUI skin
 
 
 
