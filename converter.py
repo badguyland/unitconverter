@@ -3,10 +3,10 @@ import PySimpleGUI as sg
 
 unit_conversions = {
     "Length": {
-        "Inches": {"CentiMetres": 2.54, "Feet": 1/12, "Yards": 1/36, "Metres": 0.0254, "KiloMetres": 0.0000254, "Miles": 1.57828e-5},
-        "Feet": {"Inches": 12, "CentiMetres": 30.48, "Yards": 1/3, "Metres": 0.3048, "KiloMetres": 0.0003048, "Miles": 0.000189394},
-        "Yards": {"Inches": 36, "Feet": 3, "CentiMetres": 91.44, "Metres": 0.9144, "KiloMetres": 0.0009144, "Miles": 0.000568182},
-        "Metres": {"Inches": 39.3701, "Feet": 3.28084, "Yards": 1.09361, "CentiMetres": 100, "KiloMetres": 0.001, "Miles": 0.000621371},
+        "Inches": {"Centimetres": 2.54, "Feet": 1/12, "Yards": 1/36, "Metres": 0.0254, "KiloMetres": 0.0000254, "Miles": 1.57828e-5},
+        "Feet": {"Inches": 12, "Centimetres": 30.48, "Yards": 1/3, "Metres": 0.3048, "KiloMetres": 0.0003048, "Miles": 0.000189394},
+        "Yards": {"Inches": 36, "Feet": 3, "Centimetres": 91.44, "Metres": 0.9144, "KiloMetres": 0.0009144, "Miles": 0.000568182},
+        "Metres": {"Inches": 39.3701, "Feet": 3.28084, "Yards": 1.09361, "Centimetres": 100, "KiloMetres": 0.001, "Miles": 0.000621371},
         "KiloMetres": {"Inches": 39370.1, "Feet": 3280.84, "Yards": 1093.61, "Metres": 1000, "Miles": 0.621371},
         "Miles": {"Inches": 63360, "Feet": 5280, "Yards": 1760, "Metres": 1609.34, "KiloMetres": 1.60934}
     },
@@ -45,7 +45,7 @@ def update_unit_options(window, selected_type):
     window['-TO-'].update(values=from_options)
 
 layout = [
-    [sg.Text('Enter value:'), sg.InputText()],
+    [sg.Text('Enter value:'), sg.InputText(key = '-INPUT-')],
     [sg.Text('Type:'), sg.Combo(list(unit_conversions.keys()), key='-KIND-', enable_events=True)],
     [sg.Text('From:'), sg.Combo([], key='-FROM-', size=(20, 20))],
     [sg.Text('To:'), sg.Combo([], key='-TO-', size=(20, 20))],
@@ -64,16 +64,19 @@ while True:
         break
 
     if event == 'Convert':
-        value = float(values[0])
-        conversion_type = values['-KIND-']
-        from_unit = values['-FROM-']
-        to_unit = values['-TO-']
-        if from_unit == to_unit:
-            converted_value = value
-        else:
-            conversion_factor = unit_conversions[conversion_type][from_unit][to_unit]
-            converted_value = value * conversion_factor
-        window['-OUTPUT-'].update(converted_value)
+        try:
+            value = float(values['-INPUT-'])
+            conversion_type = values['-KIND-']
+            from_unit = values['-FROM-']
+            to_unit = values['-TO-']
+            if from_unit == to_unit:
+                converted_value = value
+            else:
+                conversion_factor = unit_conversions[conversion_type][from_unit][to_unit]
+                converted_value = value * conversion_factor
+            window['-OUTPUT-'].update(converted_value)
+        except (ValueError, KeyError) :
+            sg.Popup("Input Error") 
 
     if event == '-KIND-':
         selected_type = values['-KIND-']
