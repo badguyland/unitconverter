@@ -51,6 +51,7 @@ layout = [
     [sg.Text('To:'), sg.Combo([], key='-TO-', size=(20, 20))],
     [sg.Button('Convert')],
     [sg.Text('Converted value:'), sg.Text(size=(15,1), key='-OUTPUT-')],
+    [sg.Button('Reset')],
     [sg.Button('Quit')] 
 ]
 
@@ -76,7 +77,14 @@ while True:
                 converted_value = value * conversion_factor
             window['-OUTPUT-'].update(converted_value)
         except (ValueError, KeyError) :
-            sg.Popup("Input Error") 
+            sg.Popup("Input Error")
+
+    if event == 'Reset':
+         window['-INPUT-'].update("")
+         window['-FROM-'].update("")
+         window['-TO-'].update("")
+         window['-KIND-'].update("")
+         window['-OUTPUT-'].update("")
 
     if event == '-KIND-':
         selected_type = values['-KIND-']
